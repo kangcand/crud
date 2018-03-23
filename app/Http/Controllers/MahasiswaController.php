@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Mahasiswa;
 use App\Dosen;
 use Session;
+use App\Hobi;
 class MahasiswaController extends Controller
 {
     /**
@@ -32,7 +33,8 @@ class MahasiswaController extends Controller
     public function create()
     {
         $dosen = Dosen::all();
-        return view('mahasiswa.create',compact('dosen'));
+        $hobi = Hobi::all();
+        return view('mahasiswa.create',compact('dosen','hobi'));
     }
 
     /**
@@ -46,13 +48,17 @@ class MahasiswaController extends Controller
         $this->validate($request,[
             'nama' => 'required|',
             'nim' => 'required|unique:mahasiswas',
-            'dosen_id' => 'required'
+            'dosen_id' => 'required',
+            'hobi' => 'required'
         ]);
         $mhs = new Mahasiswa;
         $mhs->nama = $request->nama;
         $mhs->nim = $request->nim;
         $mhs->dosen_id = $request->dosen_id;
         $mhs->save();
+        // attach fungsinya untuk melampirkan data,yang dilampirkan disini ialah data dari method Hobi
+        //  yang ada di model mahasiswa
+        $mhs->Hobi()->attach($request->hobi);
         Session::flash("flash_notification", [
         "level"=>"success",
         "message"=>"Berhasil menyimpan <b>$mhs->nama</b>"
@@ -84,7 +90,10 @@ class MahasiswaController extends Controller
         $mhs = Mahasiswa::findOrFail($id);
         $dosen = Dosen::all();
         $selectedDosen = Mahasiswa::findOrFail($id)->dosen_id;
-        return view('mahasiswa.edit',compact('mhs','dosen','selectedDosen'));
+        $selected = $mhs->Hobi->pluck('id')->toArray();
+        $hobi = Hobi::all();
+        // dd($selected);
+        return view('mahasiswa.edit',compact('mhs','dosen','selectedDosen','selected','hobi'));
     }
 
     /**
@@ -99,13 +108,15 @@ class MahasiswaController extends Controller
         $this->validate($request,[
             'nama' => 'required|',
             'nim' => 'required|',
-            'dosen_id' => 'required'
+            'dosen_id' => 'required',
+            'hobi' => 'required'
         ]);
         $mhs = Mahasiswa::findOrFail($id);
         $mhs->nama = $request->nama;
         $mhs->nim = $request->nim;
         $mhs->dosen_id = $request->dosen_id;
         $mhs->save();
+        $mhs->Hobi()->sync($request->hobi);
         Session::flash("flash_notification", [
         "level"=>"success",
         "message"=>"Berhasil mengedit <b>$mhs->nama</b>"

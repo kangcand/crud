@@ -1,0 +1,16 @@
+1. buat 2 table utama dan 1 table pivot(pivot)
+2. contoh 2 table utama : mahasiswa & hobi
+3. contoh table pivot(bantuan) : mahasiswa_hobi
+4. buat model Mahasiswa & Hobi beserta migration nya
+5. buat 1 table pivot-> make:migration create_table_mahasiswa_hobi --create=mahasiswa_hobi
+6. buat relasi di table pivot
+7. buat relasi di kedua model
+8. buat controller mahasiswa & hobi
+9. masukan select2.min.js ke dalam folder public/js
+10. masukan select2.min.css ke dalam folder public/css
+11. panggil select2.min.css & js di layout utama atau di layouts/app.blade.php
+12. buat crud hobi terlebih dahulu
+13. buat crud mahasiswa
+14. di controller mahasiswa bagian create & edit kita panggil data hobi melalui model
+15. kemudian dibagian create & edit.blade.php tambahkan sedikit java script di paling bawah
+16. dan di controller bagian

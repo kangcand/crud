@@ -43,6 +43,19 @@
                             </span>
                         @endif
 			  		</div>
+			  		<div class="form-group {{ $errors->has('hobi') ? ' has-error' : '' }}">
+			  			<label class="control-label">Hobi</label>	
+			  			<select name="hobi[]" class="form-control js-example-basic-multiple" multiple="multiple">
+			  				@foreach($hobi as $data)
+			  				<option value="{{ $data->id }}">{{ $data->hobi }}</option>
+			  				@endforeach
+			  			</select>
+			  			@if ($errors->has('hobi'))
+                            <span class="help-block">
+                                <strong>{{ $errors->first('hobi') }}</strong>
+                            </span>
+                        @endif
+			  		</div>
 			  		<div class="form-group">
 			  			<button type="submit" class="btn btn-primary">Tambah</button>
 			  		</div>

@@ -22,6 +22,10 @@
 			  			<label class="control-label">Dosen</label>
 						<input type="text" name="title" class="form-control" value="{{ $mhs->Dosen->nama }}"  readonly>
 			  		</div>
+			  		<div class="form-group">
+                    <strong>Hobi</strong><br>@foreach($mhs->Hobi as $key){{ $key->hobi }}, @endforeach
+
+			  		</div>
 			  	</div>
 			</div>	
 		</div>

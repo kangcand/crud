@@ -12,6 +12,9 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    {{-- tambahkan css select2 --}}
+    <link href="{{ asset('css/select2.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/select2.min.css') }}" rel="stylesheet">
 </head>
 <body>
     <div id="app">
@@ -40,6 +43,7 @@
                         <li><a href="{{ route('dosen.index') }}">Dosen</a></li>
                         <li><a href="{{ route('mahasiswa.index') }}">Mahasiswa</a></li>
                         <li><a href="{{ route('wali.index') }}">Wali</a></li>
+                        <li><a href="{{ route('hobi.index') }}">Hobi</a></li>
                         @endguest
                     </ul>
 
@@ -80,5 +84,15 @@
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}"></script>
+    {{-- tambahkan js select2 --}}
+    <script src="{{ asset('js/select2.min.js') }}"></script>
+    <script src="{{ asset('js/select2.js') }}"></script>
+    <script src="{{ asset('js/select2.full.js') }}"></script>
+    <script src="{{ asset('js/select2.full.min.js') }}"></script>
+    <script type="text/javascript">
+        $(document).ready(function() {
+    $('.js-example-basic-multiple').select2();
+});
+    </script>
 </body>
 </html>
