@@ -13,4 +13,4 @@
 13. buat crud mahasiswa
 14. di controller mahasiswa bagian create & edit kita panggil data hobi melalui model
 15. kemudian dibagian create & edit.blade.php tambahkan sedikit java script di paling bawah
-16. dan di controller bagian
+16. dan di controller mahasiswa bagian store tambah sebuah fungsi attach(melampirkan) dan di update tambah fungsi sync(sinkron)

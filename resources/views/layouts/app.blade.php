@@ -32,7 +32,7 @@
 
                     <!-- Branding Image -->
                     <a class="navbar-brand" href="{{ url('/') }}">
-                        Relasi Data
+                        Relasi
                     </a>
                 </div>
 
